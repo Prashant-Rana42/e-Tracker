@@ -1,4 +1,5 @@
 # e-Tracker
+Major Project- MCA(Master of Computer Applications)
 Developed a JavaFX-based inventory tracker and billing system using NetBeans. Designed a user-friendly interface for managing stock, tracking inventory, and generating bills. Implemented features like adding, updating, and removing items with efficient data handling.Just Extract and Run the Executable.
 Overview
 The Billing System is a Java-based application designed to streamline billing operations. It features a user-friendly interface built using JavaFX and SQLite3 which ensures efficient transaction management.
