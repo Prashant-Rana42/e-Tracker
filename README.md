@@ -15,6 +15,8 @@ To distribute the project, zip the dist folder (including the lib folder) and sh
 
 Custom jre is included for exe file, for jar you need atleast java17 instaled on your system, exe can be used without java as it is bundled with custom jre, i used Launch4j to convert jar into exe and to make custom jre i used jdeps(Checks dependencies) and jlink(creates custom jre) commands in CMD
 
+config.xml is included for launch4j configuration 
+
 Database files are saved in C:\Users\[Your Username]\AppData\Local\AppUser
 
 Annex
