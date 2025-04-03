@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing.DashboardController">
+   <children>
+      <Pane fx:id="dashpane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <Label layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" text="Dashboard">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="17.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="dash_invoice" alignment="CENTER" layoutX="13.0" layoutY="144.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="0" textFill="#414141" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="dash_customer" alignment="CENTER" layoutX="250.0" layoutY="145.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="0" textFill="#414141" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="dash_product" alignment="CENTER" layoutX="486.0" layoutY="145.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="0" textFill="#414141" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" prefHeight="21.0" prefWidth="100.0" text="/Home/Dashboard">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="10.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color opacity="0.699999988079071" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" opacity="0.699999988079071" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="13.0" layoutY="191.0" prefHeight="30.0" prefWidth="125.0" text="Daily Activities">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="17.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label alignment="CENTER" layoutX="13.0" layoutY="125.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="Earnings Today" textFill="#414141">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="78.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@file-invoice-dollar-blue.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="314.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-basket.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="249.0" layoutY="125.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="Customers Today" textFill="#414141">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Label alignment="CENTER" layoutX="486.0" layoutY="125.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #fbfbfb;" text="Restock Needed" textFill="#404040">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="551.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@boxes.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TableView fx:id="recent_table" layoutX="13.0" layoutY="221.0" prefHeight="220.0" prefWidth="675.0" style="-fx-background-color: #d2d2d2;">
+         <columns>
+            <TableColumn fx:id="invoice_id" editable="false" prefWidth="105.99998474121094" text="Invoice ID" />
+            <TableColumn fx:id="time" editable="false" minWidth="6.666656494140625" prefWidth="112.66668701171875" text="Time" />
+            <TableColumn fx:id="customer_name" editable="false" prefWidth="184.0" text="Customer Name" />
+            <TableColumn fx:id="amount" editable="false" prefWidth="138.00003051757812" text="Amount" />
+            <TableColumn fx:id="payment_status" editable="false" prefWidth="136.66668701171875" text="Payment Status" />
+         </columns>
+         <effect>
+            <ColorAdjust contrast="0.13" />
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TableView>
+   </children>
+</AnchorPane>

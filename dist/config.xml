@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\Program Files\E-Tracker\BIlling.jar</jar>
+  <outfile>D:\Program Files\E-Tracker\e-Tracker.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>true</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\Downloads\pngs\e-Tracker.ico</icon>
+  <singleInstance>
+    <mutexName>e-Tracker.exe</mutexName>
+    <windowTitle>e-Tracker.exe</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>billing.LoginApp</mainClass>
+    <cp>lib/javafx-swt.jar</cp>
+    <cp>lib/javafx.base.jar</cp>
+    <cp>lib/javafx.controls.jar</cp>
+    <cp>lib/javafx.fxml.jar</cp>
+    <cp>lib/javafx.graphics.jar</cp>
+    <cp>lib/javafx.media.jar</cp>
+    <cp>lib/javafx.swing.jar</cp>
+    <cp>lib/javafx.web.jar</cp>
+    <cp>lib/sqlite-jdbc-3.47.0.0.jar</cp>
+    <cp>lib/pdfbox-app-2.0.32.jar</cp>
+    <cp>lib/fontawesomefx-8.9.jar</cp>
+  </classPath>
+  <jre>
+    <path>jre</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+  <splash>
+    <file>D:\Downloads\PixelWave24bit.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0.0.R</txtFileVersion>
+    <fileDescription>PixelWave Application</fileDescription>
+    <copyright>© 2025 Pixel Wave Technologies.</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>10.0.R</txtProductVersion>
+    <productName>e-Tracker</productName>
+    <companyName>PixelWave</companyName>
+    <internalName>e-Tracker</internalName>
+    <originalFilename>e-Tracker.exe</originalFilename>
+    <trademarks>© 2025 Pixel Wave. All Rights Reserved.</trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <jreNotFoundErr>This application requires a Java Runtime Environment.</jreNotFoundErr>
+    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>

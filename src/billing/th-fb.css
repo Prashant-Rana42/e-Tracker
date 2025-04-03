@@ -1,0 +1,7 @@
+#Dashboard{
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #00c6ff 0.0%, #0072ff 100.0%);
+}
+#top{
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #0072ff 0.0%, #006cff 100.0%);
+}
+

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="InvoicePane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #fbfbfb;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing.InvoiceController">
+   <children>
+      <TableView fx:id="invoicetable" layoutX="13.0" layoutY="221.0" prefHeight="220.0" prefWidth="675.0" style="-fx-background-color: #d2d2d2;">
+         <columns>
+            <TableColumn fx:id="invoiceID" minWidth="6.666656494140625" prefWidth="95.33334636688232" text="Invoice ID" />
+            <TableColumn fx:id="time" prefWidth="169.3333511352539" text="Time" />
+            <TableColumn fx:id="date" prefWidth="133.33331298828125" text="Date" />
+            <TableColumn fx:id="amount" prefWidth="147.99996948242188" text="Amount" />
+            <TableColumn fx:id="status" prefWidth="130.00006103515625" text="Status" />
+         </columns>
+         <effect>
+            <ColorAdjust contrast="0.13" />
+         </effect>
+      </TableView>
+      <VBox alignment="CENTER" layoutX="99.0" layoutY="40.0" prefHeight="140.0" prefWidth="413.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <TextField fx:id="customername_txt" prefHeight="25.0" prefWidth="261.0" promptText="Customer ID">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <DatePicker fx:id="date_picker" prefHeight="25.0" prefWidth="371.0" promptText="Date" styleClass="choice-box" stylesheets="@table.css" />
+            <TextField fx:id="amount_txt" layoutX="10.0" layoutY="93.0" prefHeight="25.0" prefWidth="261.0" promptText="Amount">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <ToggleButton fx:id="statustogglebtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="399.0" style="-fx-background-color: #414141;" text="Unpaid" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </ToggleButton>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="512.0" layoutY="47.0" prefHeight="125.0" prefWidth="157.0" spacing="15.0">
+         <children>
+            <Button fx:id="updatebtn" layoutX="21.0" layoutY="75.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #414141;" text="Update Record" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@refresh.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="1.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="customerdetails" layoutX="21.0" layoutY="95.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #414141;" text="Customer Details" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@id-card.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="1.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="deletebtn" layoutX="21.0" layoutY="93.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #414141;" text="Delete Record" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@trash.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="1.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <Label layoutX="13.0" prefHeight="21.0" prefWidth="126.0" text="/Home/Invoice Details">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" text="Invoice Details">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="40.0" prefHeight="140.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-basket.png" />
+               </image>
+               <effect>
+                  <DropShadow height="1.0" radius="0.0" width="0.0" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@calendar%20Black.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@tags.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@digital-payment.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label layoutX="13.0" layoutY="191.0" prefHeight="30.0" prefWidth="150.0" text="Invoice Details">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="Searchfield" layoutX="420.0" layoutY="196.0" minHeight="22.0" prefHeight="20.0" prefWidth="200.0" promptText="Search">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="11.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="searchchoice" layoutX="620.0" layoutY="196.0" minHeight="22.0" prefHeight="20.0" prefWidth="68.0" style="-fx-background-color: #f2f2f2;" stylesheets="@table.css" />
+   </children>
+</AnchorPane>

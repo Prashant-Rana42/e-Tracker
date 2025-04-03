@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="SettingPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #fbfbfb;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billing.SettingsController">
+   <children>
+      <VBox alignment="CENTER" layoutX="99.0" layoutY="177.0" prefHeight="140.0" prefWidth="413.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <TextField fx:id="shopname" prefHeight="25.0" prefWidth="261.0" promptText="Business Name">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="Address" layoutX="10.0" layoutY="80.0" prefHeight="25.0" prefWidth="261.0" promptText="Address">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="Phone_no" layoutX="10.0" layoutY="93.0" prefHeight="25.0" prefWidth="261.0" promptText="Contact No.">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="gmail" layoutX="10.0" layoutY="105.0" prefHeight="25.0" prefWidth="261.0" promptText="E-Mail">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </TextField>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="512.0" layoutY="184.0" prefHeight="125.0" prefWidth="157.0" spacing="15.0">
+         <children>
+            <Button fx:id="savebtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #414141;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@disk.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <Label layoutX="13.0" prefHeight="21.0" prefWidth="131.0" text="/Home/Settings">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="13.0" layoutY="10.0" prefHeight="30.0" prefWidth="163.0" text="Settings">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="177.0" prefHeight="140.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@shop.png" />
+               </image>
+               <effect>
+                  <DropShadow height="1.0" radius="0.0" width="0.0" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@land-layer-location.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@phone-call.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="10.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@at.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label layoutX="13.0" layoutY="140.0" prefHeight="30.0" prefWidth="150.0" text="Business Details">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="30.0" prefHeight="110.0" prefWidth="331.0" spacing="15.0">
+         <children>
+            <Button fx:id="switchaccount" mnemonicParsing="false" prefHeight="31.0" prefWidth="343.0" style="-fx-background-color: #414141;" text="Switch Account" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@sign-in-alt.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="changePassword" layoutX="21.0" layoutY="75.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="374.0" style="-fx-background-color: #414141;" text="Change Password" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <Label layoutX="13.0" layoutY="325.0" prefHeight="30.0" prefWidth="150.0" text="About Us">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="13.0" layoutY="407.0" prefHeight="32.0" prefWidth="180.0" spacing="12.0">
+         <children>
+            <Hyperlink fx:id="facebooklink">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@facebook.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Hyperlink>
+            <Hyperlink fx:id="instalink" layoutX="117.0" layoutY="10.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@instagram.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Hyperlink>
+            <Hyperlink fx:id="linkedin" layoutX="93.0" layoutY="10.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@linkedin.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Hyperlink>
+            <Hyperlink fx:id="gitlink" layoutX="69.0" layoutY="10.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@github.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Hyperlink>
+         </children>
+      </HBox>
+      <Label layoutX="13.0" layoutY="350.0" prefHeight="51.0" prefWidth="668.0" text="This project was built as my college major project, focusing on a user-friendly billing and invoicing system. It is developed using JavaFX (21.0.5), SceneBuilder, and Java 21 in NetBeans, ensuring a modern UI and smooth functionality.For packaging, I used Launch4j to create a Windows executable. The application features a SQLite database integration for embeded databases and easier management of data. The goal was to create an efficient, lightweight, and easy-to-use solution for small businesses." wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="249.0" layoutY="405.0" prefHeight="35.0" prefWidth="195.0" text="© 2025 Pixel Wave. All Rights Reserved." wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2549019753932953" green="0.2549019753932953" blue="0.2549019753932953" opacity="0.699999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="60.0" fitWidth="200.0" layoutX="639.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@PixelWaveTransparent.png" />
+         </image>
+         <effect>
+            <DropShadow height="1.0" radius="0.0" width="0.0" />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>
