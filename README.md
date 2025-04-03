@@ -1,5 +1,5 @@
 # e-Tracker
-Developed a JavaFX-based inventory tracker and billing system using NetBeans. Designed a user-friendly interface for managing stock, tracking inventory, and generating bills. Implemented features like adding, updating, and removing items with efficient data handling.
+Developed a JavaFX-based inventory tracker and billing system using NetBeans. Designed a user-friendly interface for managing stock, tracking inventory, and generating bills. Implemented features like adding, updating, and removing items with efficient data handling.Just Extract and Run the Executable.
 Overview
 The Billing System is a Java-based application designed to streamline billing operations. It features a user-friendly interface built using JavaFX and ensures efficient transaction management.
 
@@ -12,6 +12,10 @@ Updates the MANIFEST.MF file to include necessary JARs in the Class-Path.
 
 Distribution
 To distribute the project, zip the dist folder (including the lib folder) and share it.
+
+Custom jre is included for exe file, for jar you need atleast java17 instaled on your system, exe can be used without java as it is bundled with custom jre, i used Launch4j to convert jar into exe and to make custom jre i used jdeps(Checks dependencies) and jlink(creates custom jre) commands in CMD
+
+Database files are saved in C:\Users\[Your Username]\AppData\Local\AppUser
 
 Annex
 Build Process Notes
