@@ -49,5 +49,23 @@ To distribute the project:
   ```
 
 ---
+## **Technical Details**
+- **JavaFX Version**: 21.0.5
+- **JDK**: Bellsoft JDK 21
+- **IDE**: NetBeans 23
+- **Design Tool**: SceneBuilder
+- **EXE Conversion**: Launch4j
+- **Additional Dependencies**:
+  - pdfbox-app-2.0.32.jar
+  - sqlite-jdbc-3.47.0.0.jar
+- **Helper Tools and Websites**:
+  - ChatGPT
+  - Stack Overflow
+  - Flaticon
+  - Paint.net
+  - GIMP
+
+---
 ## **License**
 This project is licensed under **Apache 2.0**.
+
