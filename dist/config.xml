@@ -46,12 +46,12 @@
     <timeoutErr>true</timeoutErr>
   </splash>
   <versionInfo>
-    <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.0.0.R</txtFileVersion>
+    <fileVersion>1.0.2.0</fileVersion>
+    <txtFileVersion>1.0.2.R</txtFileVersion>
     <fileDescription>PixelWave Application</fileDescription>
     <copyright>© 2025 Pixel Wave Technologies.</copyright>
-    <productVersion>1.0.0.0</productVersion>
-    <txtProductVersion>10.0.R</txtProductVersion>
+    <productVersion>1.0.2.0</productVersion>
+    <txtProductVersion>10.2.R</txtProductVersion>
     <productName>e-Tracker</productName>
     <companyName>PixelWave</companyName>
     <internalName>e-Tracker</internalName>

@@ -1,6 +1,7 @@
 package billing;
 // by Prashant Rana(2300680140090), prashantrana422@gmail.com
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -45,10 +46,18 @@ public class BillgenerationController {
     private double totalAmount = 0.0; // subtotal (without GST)
     
     @FXML private AnchorPane billpane;
-    @FXML private Button Printbtn;
+    @FXML private Button Printbtn;    // This is our save button
     @FXML private Button clear_btn;
     @FXML private Button printpdf;
     @FXML private TextField Searchfield;
+    
+    // Buttons for modifying items in bought item list
+    @FXML private Button plusone;
+    @FXML private Button minusone;
+    @FXML private Button cutproduct;
+    
+    // Flag to track if current bought item list has been saved.
+    private boolean dataSaved = false;
 
     public void initialize() {
         // Bind Product List TableView columns
@@ -87,33 +96,37 @@ public class BillgenerationController {
 
         loadProductData();
         // --- Begin Search Functionality Addition ---
-        // Create a FilteredList that wraps the current items in product_list
         ObservableList<Product> masterList = product_list.getItems();
         FilteredList<Product> filteredData = new FilteredList<>(masterList, p -> true);
-
-        // Add listener to the Searchfield to filter products by name in real time
         Searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(product -> {
-                // If search field is empty, display all products.
                 if (newValue == null || newValue.trim().isEmpty()) {
                     return true;
                 }
-                // Compare product name with search input (case-insensitive)
                 String lowerCaseFilter = newValue.toLowerCase();
                 return product.getProductName().toLowerCase().contains(lowerCaseFilter);
             });
         });
-
-        // Wrap the FilteredList in a SortedList to preserve table sorting
         SortedList<Product> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(product_list.comparatorProperty());
-
-        // Set the sorted (and filtered) data as items in the product_list TableView
         product_list.setItems(sortedData);
         // --- End Search Functionality Addition ---
 
         setupToggleButton();
         product_list.setOnMouseClicked(this::handleProductClick);
+        
+        // Listen for changes in the bought item list to mark unsaved changes.
+        boughtitemlist.getItems().addListener((ListChangeListener<Product>) change -> {
+            dataSaved = false;
+            if (!boughtitemlist.getItems().isEmpty()) {
+                Printbtn.setDisable(false);
+            }
+        });
+        
+        // Register button event handlers for modifying the bought item list.
+        plusone.setOnAction(this::handlePlusOne);
+        minusone.setOnAction(this::handleMinusOne);
+        cutproduct.setOnAction(this::handleCutProduct);
     }
 
     private void loadProductData() {
@@ -157,11 +170,14 @@ public class BillgenerationController {
         }
     }
 
+    // Modified addToBill: set focus on the added or updated product.
     private void addToBill(Product selectedProduct) {
         int currentQuantity = 0;
+        Product existing = null;
         for (Product product : boughtitemlist.getItems()) {
             if (product.getProductId() == selectedProduct.getProductId()) {
                 currentQuantity = product.getQuantity();
+                existing = product;
                 break;
             }
         }
@@ -171,23 +187,27 @@ public class BillgenerationController {
             showAlert("Low Stock", "Cannot add more of " + selectedProduct.getProductName() + ". Only " + availableStock + " in stock.");
             return;
         }
-        for (Product product : boughtitemlist.getItems()) {
-            if (product.getProductId() == selectedProduct.getProductId()) {
-                product.setQuantity(desiredQuantity);
-                boughtitemlist.refresh();
-                updateTotalAmount();
-                return;
-            }
+        if (existing != null) {
+            existing.setQuantity(desiredQuantity);
+            boughtitemlist.refresh();
+            updateTotalAmount();
+            // Set focus to the updated product.
+            boughtitemlist.getSelectionModel().select(existing);
+            boughtitemlist.requestFocus();
+        } else {
+            Product newProduct = new Product(
+                selectedProduct.getProductId(),
+                selectedProduct.getProductName(),
+                selectedProduct.getPrice(),
+                selectedProduct.getGst()
+            );
+            newProduct.setQuantity(1);
+            boughtitemlist.getItems().add(newProduct);
+            updateTotalAmount();
+            // Set focus to the newly added product.
+            boughtitemlist.getSelectionModel().select(newProduct);
+            boughtitemlist.requestFocus();
         }
-        Product newProduct = new Product(
-            selectedProduct.getProductId(),
-            selectedProduct.getProductName(),
-            selectedProduct.getPrice(),
-            selectedProduct.getGst()
-        );
-        newProduct.setQuantity(1);
-        boughtitemlist.getItems().add(newProduct);
-        updateTotalAmount();
     }
     
     @FXML
@@ -239,6 +259,29 @@ public class BillgenerationController {
         return details;
     }
 
+    // Helper method to fetch latest invoice and customer IDs using customer phone
+    private int[] fetchLatestInvoiceIds(String customerPhone) {
+        int[] ids = new int[2]; // ids[0] = invoiceId, ids[1] = customerId
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement ps = conn.prepareStatement(
+                 "SELECT i.invoice_id, c.customer_id " +
+                 "FROM InvoiceDetails i " +
+                 "INNER JOIN Customers c ON i.customer_id = c.customer_id " +
+                 "WHERE c.phone = ? " +
+                 "ORDER BY i.invoice_id DESC LIMIT 1"
+             )) {
+            ps.setString(1, customerPhone);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ids[0] = rs.getInt("invoice_id");
+                ids[1] = rs.getInt("customer_id");
+            }
+        } catch (SQLException e) {
+            showAlert("Database Error", "Error fetching invoice details: " + e.getMessage());
+        }
+        return ids;
+    }
+
     @FXML
     private void PrintPDF(ActionEvent event) {
         String customerName = customer_name_txt.getText();
@@ -253,14 +296,18 @@ public class BillgenerationController {
         LocalTime now = LocalTime.now();
         String date = today.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        // In this method, we only generate the PDF without invoice/customer IDs
-        // You might call the full Print() method instead for complete functionality
-        // For demonstration, we assume invoice/customer IDs are not available here
+        // In this method, we pass 0 for IDs, so generateReceiptPDF will try to fetch them.
         generateReceiptPDF(customerName, customerPhone, date, time, paymentStatus, 0, 0);
     }
 
     @FXML
     private void Print(ActionEvent event) {
+        // Check if data has already been saved.
+        if (dataSaved) {
+            showAlert("Info", "Data has already been saved. Make changes to enable saving again.");
+            return;
+        }
+        
         if (boughtitemlist.getItems().isEmpty()) {
             showAlert("Error", "The bought item list is empty. Add items to generate a receipt.");
             return;
@@ -273,7 +320,7 @@ public class BillgenerationController {
         String customerPhone = customer_phone_txt.getText();
         // Validate phone number length before proceeding.
         if (!isValidPhone(customerPhone)) {
-            showAlert("Validation Error", "Phone number must be exactly 10 digits starting from 6-9");
+            showAlert("Validation Error", "Phone number must be exactly 10 digits.");
             return;
         }
         String paymentStatus = statustoggle_paid_unpaid.isSelected() ? "Paid" : "Unpaid";
@@ -361,8 +408,13 @@ public class BillgenerationController {
             receipt.append("Thank You for your Purchase!\n");
             recipt_textarea.setText(receipt.toString());
 
-            // Generate PDF with all details including invoice and customer IDs
-            //generateReceiptPDF(customerName, customerPhone, date, time, paymentStatus, invoiceId, customerId);
+            // Mark current data as saved and disable the save button.
+            dataSaved = true;
+            Printbtn.setDisable(true);
+
+            // The generateReceiptPDF call is commented out here because we are treating Print() as a save-only method.
+            // To print the PDF, use the PrintPDF button which will fetch the latest IDs.
+            // generateReceiptPDF(customerName, customerPhone, date, time, paymentStatus, invoiceId, customerId);
 
         } catch (SQLException e) {
             showAlert("Database Error", "Error generating the bill: " + e.getMessage());
@@ -370,6 +422,13 @@ public class BillgenerationController {
     }
 
     private void generateReceiptPDF(String customerName, String customerPhone, String date, String time, String paymentStatus, int invoiceId, int customerId) {
+        // If the IDs are 0, fetch the latest invoice and customer IDs from the database
+        if (invoiceId == 0 || customerId == 0) {
+            int[] ids = fetchLatestInvoiceIds(customerPhone);
+            invoiceId = ids[0];
+            customerId = ids[1];
+        }
+
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
         document.addPage(page);
@@ -452,6 +511,7 @@ public class BillgenerationController {
                 showAlert("Error", "Error closing PDF document: " + e.getMessage());
             }
         }
+        clearButtonAction(new ActionEvent());
     }
 
     // Helper method to get available stock from the Product table using product_id
@@ -479,6 +539,65 @@ public class BillgenerationController {
     // Helper method to validate a phone number is exactly 10 digits.
     public static boolean isValidPhone(String phone) {
         if (phone == null) return false;
-        return phone.matches("^[6-9]\\d{9}$"); // Ensures it starts with 6-9 (common for India) and is 10 digits long
+        return phone.matches("^\\d{10}$"); // Ensures phone number is exactly 10 digits long
+    }
+    
+    @FXML
+    private void handlePlusOne(ActionEvent event) {
+        Product selected = boughtitemlist.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("Selection Error", "Please select a product from the list to increase its quantity.");
+            return;
+        }
+        int currentQuantity = selected.getQuantity();
+        int availableStock = getAvailableStock(selected.getProductId());
+        if (currentQuantity + 1 > availableStock) {
+            showAlert("Low Stock", "Cannot increase quantity. Only " + availableStock + " items available in stock.");
+            return;
+        }
+        selected.setQuantity(currentQuantity + 1);
+        boughtitemlist.refresh();
+        updateTotalAmount();
+        // Mark data as unsaved and enable the save button.
+        dataSaved = false;
+        Printbtn.setDisable(false);
+    }
+    
+    // Handler for the minusone button
+    @FXML
+    private void handleMinusOne(ActionEvent event) {
+        Product selected = boughtitemlist.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("Selection Error", "Please select a product from the list to decrease its quantity.");
+            return;
+        }
+        int currentQuantity = selected.getQuantity();
+        if (currentQuantity <= 1) {
+            // If quantity goes to zero or less, remove the product.
+            boughtitemlist.getItems().remove(selected);
+        } else {
+            selected.setQuantity(currentQuantity - 1);
+        }
+        boughtitemlist.refresh();
+        updateTotalAmount();
+        // Mark data as unsaved and enable the save button.
+        dataSaved = false;
+        Printbtn.setDisable(false);
+    }
+    
+    // Handler for the cutproduct button
+    @FXML
+    private void handleCutProduct(ActionEvent event) {
+        Product selected = boughtitemlist.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("Selection Error", "Please select a product from the list to remove it.");
+            return;
+        }
+        boughtitemlist.getItems().remove(selected);
+        boughtitemlist.refresh();
+        updateTotalAmount();
+        // Mark data as unsaved and enable the save button.
+        dataSaved = false;
+        Printbtn.setDisable(false);
     }
 }

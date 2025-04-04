@@ -13,6 +13,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -31,7 +32,7 @@
             </TextArea>
          </children>
       </Pane>
-      <TableView fx:id="boughtitemlist" layoutX="200.0" layoutY="40.0" prefHeight="250.0" prefWidth="232.0" style="-fx-background-color: #d2d2d2;">
+      <TableView fx:id="boughtitemlist" layoutX="200.0" layoutY="40.0" prefHeight="235.0" prefWidth="232.0" style="-fx-background-color: #d2d2d2;">
         <columns>
           <TableColumn fx:id="productnameB" editable="false" prefWidth="80.66670227050781" text="Product" />
           <TableColumn fx:id="productQuantityB" prefWidth="65.3333740234375" text="Quantity" />
@@ -80,17 +81,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="200.0" layoutY="410.0" prefHeight="30.0" prefWidth="90.0" text="Total Amount :">
+      <Label layoutX="200.0" layoutY="417.0" prefHeight="22.0" prefWidth="90.0" text="Total Amount :">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="totalamount_label" layoutX="290.0" layoutY="410.0" prefHeight="30.0" prefWidth="126.0" text="0">
+      <Label fx:id="totalamount_label" layoutX="290.0" layoutY="417.0" prefHeight="22.0" prefWidth="126.0" text="0">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" layoutX="225.0" layoutY="290.0" prefHeight="120.0" prefWidth="208.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+      <VBox alignment="CENTER" layoutX="225.0" layoutY="297.0" prefHeight="120.0" prefWidth="208.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
          <children>
             <TextField fx:id="customer_name_txt" prefHeight="25.0" prefWidth="261.0" promptText="Customer Name">
                <font>
@@ -167,7 +168,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <VBox alignment="CENTER" layoutX="200.0" layoutY="290.0" prefHeight="120.0" prefWidth="25.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
+      <VBox alignment="CENTER" layoutX="200.0" layoutY="297.0" prefHeight="120.0" prefWidth="25.0" spacing="10.0" style="-fx-background-color: #fbfbfb;">
          <children>
             <ImageView fitHeight="25.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -200,5 +201,34 @@
             <Font name="Arial Rounded MT Bold" size="11.0" />
          </font>
       </TextField>
+      <HBox alignment="CENTER" layoutX="200.0" layoutY="275.0" prefHeight="0.0" prefWidth="232.0" spacing="1.0" style="-fx-background-color: #fbfbfb;">
+         <children>
+            <Button fx:id="plusone" mnemonicParsing="false" prefHeight="17.0" prefWidth="76.0" style="-fx-background-color: #414141;" text="+1" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="minusone" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="76.0" style="-fx-background-color: #414141;" text="-1" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="cutproduct" layoutX="55.0" layoutY="10.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="76.0" style="-fx-background-color: #414141;" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@trash.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="1.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
