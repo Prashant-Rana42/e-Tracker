@@ -32,7 +32,7 @@ To distribute the project:
 - To use it:
   1. **Double-click** `jre.exe` to extract the JRE.
   2. **DO NOT change the extraction path**.
-  3. Once extracted, run your `.exe` file.
+  3. Once extracted, run your `e-Tracker.exe` file.
 - For `.jar` users, **Java 17 or higher** must be installed on your system.
 
 ### **Tools Used**
