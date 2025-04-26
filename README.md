@@ -30,7 +30,7 @@ To distribute the project:
 - A **custom JRE** is included to allow the `.exe` file to run **without needing Java installed**.
 - The **custom JRE** is provided as a **Self-Extracting Archive (SFXARC)** named `jre.exe`.
 - To use it:
-  1. **Double-click** `jre.exe` to extract the JRE.
+  1. **Double-click** `jre.exe` to extract the JRE or Run as Adminstrator in case you get error when extracting
   2. **DO NOT change the extraction path**.
   3. Once extracted, run your `e-Tracker.exe` file.
 - For `.jar` users, **Java 17 or higher** must be installed on your system.

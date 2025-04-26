@@ -1,9 +1,15 @@
+============
+HOW TO SETUP 
+============
+
+If you have java installed on your system you can directly run e-Tracker.jar file,if not then run jre.exe as Administrator and extract minimal jre in default(same as e-Tracker.exe) folder, then you can run e-Tracker.exe as a standalone Application.
+
 ===================
 PROJECT DESCRIPTION 
 ===================
 
 By Prashant Rana, prashantrana422@gmail.com
-for the exe file minimal jre is included in the project,i made a SFXARC(Self Extracting Archive) for jre so you dont need any external tool just double click the jre.exe to extract jre,dont change the extract location of jre,keep it in same folder as your e-Tracker.exe folder
+for the exe file minimal jre is included in the project,i made a SFXARC(Self Extracting Archive) for jre so you dont need any external tool just double click the jre.exe to extract jre or run as administrator if you get an error when extracting,dont change the extract location of jre,keep it in same folder as your e-Tracker.exe folder
 to run jar file you need atleast java 17 installed on your system
 i used SQLite for database so files are saved locally in C:\Users\[Your Username]\AppData\Local\AppUser
 
